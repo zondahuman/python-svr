@@ -77,20 +77,23 @@ def selectLimit(application_id):
 
 def createFileByIdNo():
     print "createFileByIdNo-------------start--------------"
-    for i in range(111111111111100695, 111111111111100696):
+    for i in range(111111111111100001, 111111111111101500):
         application_sn = str(i)
         task_type = str(i)
         application_source = "RRD"
         idNo = str(i)
         print "application_sn= ", application_sn, ",task_type=", task_type, ",application_source=", application_source, ",idNo=", idNo
         status_id = selectSubmitInfo(application_sn, task_type, application_source)
-        application_id = selectStatus(status_id)
-        input = selectLimit(application_id)
-        file_name = str(idNo)+".txt"
-        print "file_name= " , file_name
-        file=open(file_name,'w')    # r只读，w可写，a追加
-        file.write(input+'\n')
-        file.close()
+        if status_id:
+            application_id = selectStatus(status_id)
+            if application_id:
+                input = selectLimit(application_id)
+                if input:
+                    file_name = "/opt/app/script/application/%s"%str(idNo)+".txt"
+                    print "file_name= " , file_name
+                    file=open(file_name,'w')    # r只读，w可写，a追加
+                    file.write(input+'\n')
+                    file.close()
     print "createFileByIdNo-------------end--------------"
 
 if __name__ == "__main__":
