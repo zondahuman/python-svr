@@ -77,7 +77,7 @@ def selectLimit(application_id):
 
 def createFileByIdNo():
     print "createFileByIdNo-------------start--------------"
-    for i in range(111111111111100001, 111111111111101500):
+    for i in range(111111111111101501, 111111111111116067):
         application_sn = str(i)
         task_type = str(i)
         application_source = "RRD"
