@@ -38,7 +38,7 @@ if __name__ == "__main__":
     #
     # ###
     # for i in range(111111111111100100, 111111111111116067):
-    for i in range(111111111111100100, 111111111111103000):
+    for i in range(111111111111103000, 111111111111116067):
         idNo = str(i)
         uniqKey = idNo
         # taskType = sys.argv[1]
