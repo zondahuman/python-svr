@@ -28,18 +28,14 @@ def send(idNo, taskType, uniqKey, realName):
     print " [x] Sent %s" %body
     connection.close()
 
-
 if __name__ == "__main__":
     realName = '李国强'
     #从    111111111111100000
     #到    111111111111116067
-    #
-    #
-    #
     # ###
-    # for i in range(111111111111100100, 111111111111116067):
+    for i in range(111111111111100000, 111111111111100100):
     # for i in range(111111111111103000, 111111111111116067):
-    for i in range(222222222222203000, 222222222222203001):
+    # for i in range(222222222222203000, 222222222222203001):
         idNo = str(i)
         uniqKey = idNo
         # taskType = sys.argv[1]

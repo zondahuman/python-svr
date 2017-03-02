@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
-# __author__ = "TKQ"
+# __author__ = "abin"
 import pymysql
 import json
 
