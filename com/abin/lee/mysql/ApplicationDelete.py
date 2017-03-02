@@ -101,6 +101,33 @@ def deleteSchedule(application_id):
     print "deleteSchedule-------------end--------------"
 
 
+def deleteUserMobileRegion(application_id):
+    print "deleteUserMobileRegion-------------start--------------"
+    conn = pymysql.connect(host='172.16.2.112', port=3306, user='heika_dev', passwd='heika_dev@qwe321', db='rrd_verify')
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = "DELETE FROM verify_application_user_mobile_region where application_id="+"'"+application_id+"'"+""
+    print "sql= " , sql
+    cursor.execute(sql)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print "deleteUserMobileRegion-------------end--------------"
+
+
+def deleteUserPositionn(application_id):
+    print "deleteUserPositionn-------------start--------------"
+    conn = pymysql.connect(host='172.16.2.112', port=3306, user='heika_dev', passwd='heika_dev@qwe321', db='rrd_verify')
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = "DELETE FROM verify_application_user_position where application_id="+"'"+application_id+"'"+""
+    print "sql= " , sql
+    cursor.execute(sql)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print "deleteUserPositionn-------------end--------------"
+
 
 def deleteSubmitInfo(application_sn, task_type, application_source):
     print "deleteSubmitInfo-------------start--------------"
@@ -130,12 +157,14 @@ def call():
         print "application_sn= ", application_sn, ",task_type=", task_type, ",application_source=", application_source, ",idNo=", idNo
         application_id = application_source + '_'+ application_sn + "_" + task_type
         print "application_id= " , application_id
-        deleteUserContact(application_id)
-        deleteUserInfo(application_id)
-        deleteLimit(application_id)
-        deletePbcRelation(application_id)
-        deleteUserEmergencyContact(application_id)
-        deleteSubmitInfo(application_sn, task_type, application_source)
+        # deleteUserContact(application_id)
+        # deleteUserInfo(application_id)
+        # deleteLimit(application_id)
+        # deletePbcRelation(application_id)
+        # deleteUserEmergencyContact(application_id)
+        deleteUserMobileRegion(application_id)
+        deleteUserPositionn(application_id)
+        # deleteSubmitInfo(application_sn, task_type, application_source)
         print "call-------------end--------------"
 
 if __name__ == "__main__":
