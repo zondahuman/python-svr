@@ -129,6 +129,60 @@ def deleteUserPositionn(application_id):
     print "deleteUserPositionn-------------end--------------"
 
 
+def deleteLoanInfo(application_id):
+    print "deleteLoanInfo-------------start--------------"
+    conn = pymysql.connect(host='172.16.2.112', port=3306, user='heika_dev', passwd='heika_dev@qwe321', db='rrd_verify')
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = "DELETE FROM verify_application_loan_info where application_id="+"'"+application_id+"'"+""
+    print "sql= " , sql
+    cursor.execute(sql)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print "deleteLoanInfo-------------end--------------"
+
+
+def deleteCallRecord(application_id):
+    print "deleteCallRecord-------------start--------------"
+    conn = pymysql.connect(host='172.16.2.112', port=3306, user='heika_dev', passwd='heika_dev@qwe321', db='rrd_verify')
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = "DELETE FROM verify_application_call_record where application_id="+"'"+application_id+"'"+""
+    print "sql= " , sql
+    cursor.execute(sql)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print "deleteCallRecord-------------end--------------"
+
+def deleteProjDetail(application_id):
+    print "deleteProjDetail-------------start--------------"
+    conn = pymysql.connect(host='172.16.2.112', port=3306, user='heika_dev', passwd='heika_dev@qwe321', db='rrd_verify')
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = "DELETE FROM verify_application_proj_detail where application_id="+"'"+application_id+"'"+""
+    print "sql= " , sql
+    cursor.execute(sql)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print "deleteProjDetail-------------end--------------"
+
+
+def deleteQuestionnaire(application_id):
+    print "deleteQuestionnaire-------------start--------------"
+    conn = pymysql.connect(host='172.16.2.112', port=3306, user='heika_dev', passwd='heika_dev@qwe321', db='rrd_verify')
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = "DELETE FROM verify_application_questionnaire where application_id="+"'"+application_id+"'"+""
+    print "sql= " , sql
+    cursor.execute(sql)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print "deleteQuestionnaire-------------end--------------"
+
 def deleteSubmitInfo(application_sn, task_type, application_source):
     print "deleteSubmitInfo-------------start--------------"
     conn = pymysql.connect(host='172.16.2.112', port=3306, user='heika_dev', passwd='heika_dev@qwe321', db='rrd_verify')
@@ -157,14 +211,20 @@ def call():
         print "application_sn= ", application_sn, ",task_type=", task_type, ",application_source=", application_source, ",idNo=", idNo
         application_id = application_source + '_'+ application_sn + "_" + task_type
         print "application_id= " , application_id
-        # deleteUserContact(application_id)
-        # deleteUserInfo(application_id)
-        # deleteLimit(application_id)
-        # deletePbcRelation(application_id)
-        # deleteUserEmergencyContact(application_id)
+        deleteUserContact(application_id)
+        deleteUserInfo(application_id)
+        deleteLimit(application_id)
+        deletePbcRelation(application_id)
+        deleteUserEmergencyContact(application_id)
         deleteUserMobileRegion(application_id)
         deleteUserPositionn(application_id)
-        # deleteSubmitInfo(application_sn, task_type, application_source)
+        deleteLoanInfo(application_id)
+        deleteCallRecord(application_id)
+        deleteProjDetail(application_id)
+        deleteQuestionnaire(application_id)
+        deleteSchedule(application_id)
+        deleteStatus(application_id)
+        deleteSubmitInfo(application_sn, task_type, application_source)
         print "call-------------end--------------"
 
 if __name__ == "__main__":
