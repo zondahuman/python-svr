@@ -3,6 +3,7 @@
 import pika
 import json
 import uuid
+import random
 
 def send(idNo, taskType, uniqKey, realName):
     credentials = pika.PlainCredentials('guest', 'guest')
@@ -37,6 +38,6 @@ if __name__ == "__main__":
     uniqKey = unique.replace('-','')
     uniqKey = uniqKey[0:10]
     # taskType = sys.argv[1]
-    taskType = 3
+    taskType = random.randint(1, 200)
     print "idNo="+idNo
     send(idNo, taskType, uniqKey, realName)
