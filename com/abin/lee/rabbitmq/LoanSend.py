@@ -29,8 +29,10 @@ def send(idNo, taskType, uniqKey, realName):
     connection.close()
 
 if __name__ == "__main__":
-    realName = '杨正祥'
-    idNo = '533527198909210238'
+    # realName = '杨正祥'
+    # idNo = '533527198909210238'
+    realName = '倪瑶博'
+    idNo = '110101197606085635'
     unique = str(uuid.uuid1());
     uniqKey = unique.replace('-','')
     uniqKey = uniqKey[0:10]
