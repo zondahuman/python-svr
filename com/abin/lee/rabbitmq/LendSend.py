@@ -28,7 +28,7 @@ def send(idNo, taskType, uniqKey, realName):
     connection.close()
 
 if __name__ == "__main__":
-    realName = '李国强'
+    realName = '杨正祥'
     #从    111111111111100000
     #到    111111111111116067
     # ###
