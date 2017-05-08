@@ -33,6 +33,6 @@ if __name__ == "__main__":
     idNo = '533527198909210238'
     uniqKey = int(time.time()*1000)
     # taskType = sys.argv[1]
-    taskType = 1
+    taskType = 5
     print "idNo="+idNo
     send(idNo, taskType, uniqKey, realName)

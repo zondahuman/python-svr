@@ -35,6 +35,6 @@ if __name__ == "__main__":
     uniqKey = unique.replace('-','')
     uniqKey = uniqKey[0:10]
     # taskType = sys.argv[1]
-    taskType = 1
+    taskType = 3
     print "idNo="+idNo
     send(idNo, taskType, uniqKey, realName)
