@@ -40,7 +40,8 @@ if __name__ == "__main__":
     unique = str(uuid.uuid1());
     uniqKey = unique.replace('-','')
     userKey = unique.replace('-','')
-    uniqKey = uniqKey[0:10]
+    offset = random.randint(10, 15)
+    uniqKey = uniqKey[0:offset]
     # taskType = sys.argv[1]
     taskType = random.randint(1, 200)
     print "idNo="+idNo
