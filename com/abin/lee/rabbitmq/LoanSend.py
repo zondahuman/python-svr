@@ -5,7 +5,7 @@ import json
 import uuid
 import random
 
-def send(idNo, taskType, uniqKey, realName):
+def send(idNo, taskType, uniqKey, realName, userKey):
     credentials = pika.PlainCredentials('guest', 'guest')
     # 这里可以连接远程IP，请记得打开远程端口
     parameters = pika.ConnectionParameters('172.16.2.145', 15671, '/', credentials)
@@ -21,6 +21,7 @@ def send(idNo, taskType, uniqKey, realName):
     body['data']['taskType'] = taskType
     body['data']['userBasicInfo']['idNo'] = idNo
     body['data']['userBasicInfo']['realName'] = realName
+    body['data']['userBasicInfo']['userKey'] = userKey
 
     content = json.dumps(body)
     print "Sent is : %s" %content
@@ -38,8 +39,9 @@ if __name__ == "__main__":
     idNo = '110101198606250113'
     unique = str(uuid.uuid1());
     uniqKey = unique.replace('-','')
+    userKey = unique.replace('-','')
     uniqKey = uniqKey[0:10]
     # taskType = sys.argv[1]
     taskType = random.randint(1, 200)
     print "idNo="+idNo
-    send(idNo, taskType, uniqKey, realName)
+    send(idNo, taskType, uniqKey, realName, userKey)
