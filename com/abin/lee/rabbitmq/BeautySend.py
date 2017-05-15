@@ -38,8 +38,10 @@ def send(idNo, taskType, uniqKey, realName, userKey):
 if __name__ == "__main__":
     # realName = '杨正祥'
     # idNo = '533527198909210238'
-    realName = '倪瑶博'
-    idNo = '110101197606085635'
+    # realName = '林朝玉'
+    # idNo = '512501196512305186'
+    realName = '马克龙'
+    idNo = '110101198606250113'
     uniqKey = int(time.time()*1000)
     # taskType = sys.argv[1]
     taskType = 1
