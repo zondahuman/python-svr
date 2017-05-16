@@ -4,7 +4,7 @@ import pika
 import json
 import uuid
 import random
-from com.abin.lee.util import CharacterUtil,UuidUtil,NumberUtil
+from com.abin.lee.util import CharacterUtil,UuidUtil,NumberUtil,IdNoUtil
 
 def send(idNo, taskType, uniqKey, realName, userKey):
     credentials = pika.PlainCredentials('guest', 'guest')
@@ -37,11 +37,14 @@ if __name__ == "__main__":
     # realName = '倪瑶博'
     # idNo = '110101197606085635'
     # realName = '马克龙'
+    # idNo = '110101198606250113'
     realName = CharacterUtil.createName()
-    idNo = '110101198606250113'
+    idNo = IdNoUtil.create_id_no()
+    # idNo = '110101198606250113'
     userKey = UuidUtil.loanUuidAll()
     uniqKey = UuidUtil.loanUuid15()
     # taskType = sys.argv[1]
-    taskType = NumberUtil.randomNumber(10)
+    taskType = 1
+    # taskType = NumberUtil.randomNumber(10)
     print "idNo="+idNo
     send(idNo, taskType, uniqKey, realName, userKey)
