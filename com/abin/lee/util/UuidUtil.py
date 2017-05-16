@@ -1,5 +1,7 @@
-#! coding:utf-8
+# -*- coding:utf-8 -*-
+#!/usr/bin/env python
 import uuid
+import random
 
 def uuid1():
     print u"uuid1  生成基于计算机主机ID和当前时间的UUID"
@@ -19,8 +21,21 @@ def uuid16():
     print u"转换成十六进制的UUID表现字符"
     return str(x)       # '00010203-0405-0607-0809-0a0b0c0d0e0f'
 
-def loanUuid():
+def loanUuidAll():
+    unique = str(uuid.uuid1());
+    uniqKey = unique.replace('-','')
+    return uniqKey
+
+
+def loanUuid10():
     unique = str(uuid.uuid1());
     uniqKey = unique.replace('-','')
     uniqKey = uniqKey[0:10]
+    return uniqKey
+
+def loanUuid15():
+    unique = str(uuid.uuid1());
+    uniqKey = unique.replace('-','')
+    offset = random.randint(10, 15)
+    uniqKey = uniqKey[0:offset]
     return uniqKey
