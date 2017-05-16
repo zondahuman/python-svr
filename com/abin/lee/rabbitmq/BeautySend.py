@@ -4,7 +4,7 @@ import pika
 import json
 import time
 import random
-from com.abin.lee.util import CharacterUtil,NumberUtil
+from com.abin.lee.util import CharacterUtil,NumberUtil,IdNoUtil
 
 def send(idNo, taskType, uniqKey, realName, userKey):
     credentials = pika.PlainCredentials('guest', 'guest')
@@ -42,8 +42,9 @@ if __name__ == "__main__":
     # realName = '林朝玉'
     # idNo = '512501196512305186'
     # realName = '马克龙'
-    realName = CharacterUtil.createName()
     idNo = '110101198606250113'
+    realName = CharacterUtil.createName()
+    idNo = IdNoUtil.create_id_no()
     uniqKey = NumberUtil.timestamp1000()
     # taskType = sys.argv[1]
     # taskType = 1
