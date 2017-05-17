@@ -10,3 +10,4 @@
 rebel*.xml
 *.log
 $*
+*.pyc
