@@ -36,10 +36,10 @@ if __name__ == "__main__":
     # idNo = '533527198909210238'
     # realName = '倪瑶博'
     # idNo = '110101197606085635'
-    # realName = '马克龙'
-    # idNo = '110101198606250113'
-    realName = CharacterUtil.createName()
-    idNo = IdNoUtil.create_id_no()
+    realName = '马克龙'
+    idNo = '110101198606250113'
+    # realName = CharacterUtil.createName()
+    # idNo = IdNoUtil.create_id_no()
     # idNo = '110101198606250113'
     userKey = UuidUtil.loanUuidAll()
     uniqKey = UuidUtil.loanUuid15()
