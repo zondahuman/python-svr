@@ -48,7 +48,7 @@ if __name__ == "__main__":
     uniqKey = NumberUtil.timestamp1000()
     # taskType = sys.argv[1]
     # taskType = 1
-    taskType = NumberUtil.randomNumber(2)
+    taskType = NumberUtil.randomNumber(10, 20)
     userKey = NumberUtil.random1000();
     print "idNo="+idNo
     send(idNo, taskType, uniqKey, realName, userKey)

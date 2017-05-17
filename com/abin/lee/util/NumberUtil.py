@@ -20,6 +20,9 @@ def random10():
 def randomNumber(param):
     return random.randint(1,param)
 
+def randomNumber(start, end):
+    return random.randint(start, end)
+
 if __name__ == '__main__':
     print random.randint(1, 200)
 

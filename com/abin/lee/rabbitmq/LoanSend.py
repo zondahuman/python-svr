@@ -45,6 +45,6 @@ if __name__ == "__main__":
     uniqKey = UuidUtil.loanUuid15()
     # taskType = sys.argv[1]
     taskType = 1
-    # taskType = NumberUtil.randomNumber(10)
+    taskType = NumberUtil.randomNumber(5, 10)
     print "idNo="+idNo
     send(idNo, taskType, uniqKey, realName, userKey)
