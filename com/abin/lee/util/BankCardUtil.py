@@ -22,6 +22,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 # pylint: disable=C0103
 from random import Random
 import copy
+
 visaPrefixList = [
     ['4', '5', '3', '9'],
     ['4', '5', '5', '6'],
@@ -113,3 +114,24 @@ jcb = credit_card_number(generator, jcbPrefixList, 16, 3)
 print(output("JCB", jcb))
 voyager = credit_card_number(generator, voyagerPrefixList, 15, 3)
 print(output("Voyager", voyager))
+
+
+
+
+def masterCard(num):
+    mastercard = credit_card_number(generator, mastercardPrefixList, 16, 5)
+    return  mastercard[num]
+
+def visa16(num):
+    visa16 = credit_card_number(generator, visaPrefixList, 16, 5)
+    return  visa16[num]
+
+def visa13(num):
+    visa13 = credit_card_number(generator, visaPrefixList, 13, 5)
+    return  visa13[num]
+
+
+
+
+
+

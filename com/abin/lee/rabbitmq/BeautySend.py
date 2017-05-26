@@ -4,9 +4,9 @@ import pika
 import json
 import time
 import random
-from com.abin.lee.util import CharacterUtil,NumberUtil,IdNoUtil
+from com.abin.lee.util import CharacterUtil,NumberUtil,IdNoUtil,MobileUtil,BankCardUtil
 
-def send(idNo, taskType, uniqKey, realName, userKey):
+def send(idNo, taskType, uniqKey, realName, userKey, mobile, creditCardNo):
     credentials = pika.PlainCredentials('guest', 'guest')
     # 这里可以连接远程IP，请记得打开远程端口
     parameters = pika.ConnectionParameters('172.16.2.145', 15671, '/', credentials)
@@ -28,6 +28,8 @@ def send(idNo, taskType, uniqKey, realName, userKey):
     body['data']['userBasicInfo']['idNo'] = idNo
     body['data']['userBasicInfo']['realName'] = realName
     body['data']['userBasicInfo']['userKey'] = userKey
+    body['data']['userBasicInfo']['mobile'] = mobile
+    body['data']['userBasicInfo']['creditCardNo'] = creditCardNo
 
     content = json.dumps(body)
     print "Sent is : %s" %content
@@ -41,14 +43,16 @@ if __name__ == "__main__":
     # idNo = '533527198909210238'
     # realName = '林朝玉'
     # idNo = '512501196512305186'
-    realName = '马克龙'
-    idNo = '110101198606250113'
-    # realName = CharacterUtil.createName()
-    # idNo = IdNoUtil.create_id_no()
+    # realName = '马克龙'
+    # idNo = '110101198606250113'
+    realName = CharacterUtil.createName()
+    idNo = IdNoUtil.create_id_no()
     uniqKey = NumberUtil.timestamp1000()
+    mobile = MobileUtil.createMobile()
+    creditCardNo = BankCardUtil.masterCard(0)
     # taskType = sys.argv[1]
     # taskType = 1
     taskType = NumberUtil.randomNumber(10, 20)
     userKey = NumberUtil.random1000();
     print "idNo="+idNo
-    send(idNo, taskType, uniqKey, realName, userKey)
+    send(idNo, taskType, uniqKey, realName, userKey, mobile, creditCardNo)
