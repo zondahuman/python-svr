@@ -6,7 +6,7 @@ import time
 import random
 from com.abin.lee.util import CharacterUtil,NumberUtil,IdNoUtil,MobileUtil,BankCardUtil
 
-def send(idNo, taskType, uniqKey, realName, userKey, mobile, creditCardNo):
+def send(idNo, taskType, uniqKey, realName, userKey, mobile, creditCardNo, reserveMobile):
     credentials = pika.PlainCredentials('guest', 'guest')
     # 这里可以连接远程IP，请记得打开远程端口
     parameters = pika.ConnectionParameters('172.16.2.145', 15671, '/', credentials)
@@ -29,6 +29,7 @@ def send(idNo, taskType, uniqKey, realName, userKey, mobile, creditCardNo):
     body['data']['userBasicInfo']['realName'] = realName
     body['data']['userBasicInfo']['userKey'] = userKey
     body['data']['userBasicInfo']['mobile'] = mobile
+    body['data']['userBasicInfo']['reserveMobile'] = reserveMobile
     body['data']['userBasicInfo']['creditCardNo'] = creditCardNo
 
     content = json.dumps(body)
@@ -49,10 +50,11 @@ if __name__ == "__main__":
     idNo = IdNoUtil.create_id_no()
     uniqKey = NumberUtil.timestamp1000()
     mobile = MobileUtil.createMobile()
+    reserveMobile = MobileUtil.createMobile()
     creditCardNo = BankCardUtil.masterCard(0)
     # taskType = sys.argv[1]
     # taskType = 1
     taskType = NumberUtil.randomNumber(10, 20)
     userKey = NumberUtil.random1000();
     print "idNo="+idNo
-    send(idNo, taskType, uniqKey, realName, userKey, mobile, creditCardNo)
+    send(idNo, taskType, uniqKey, realName, userKey, mobile, creditCardNo, reserveMobile)
