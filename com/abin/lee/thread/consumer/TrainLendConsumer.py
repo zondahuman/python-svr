@@ -18,6 +18,7 @@ channel.queue_declare(queue=RabbitmqConfig.RabbitmqEnum.RABBITMQ_QUEUE)
 # 定义一个回调函数来处理，这边的回调函数就是将信息打印出来。
 def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
+    print("body=" % body)
 
 
 # 告诉rabbitmq使用callback来接收信息

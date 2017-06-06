@@ -8,7 +8,7 @@ from com.abin.lee.rabbitmq import TrainSend
 from com.abin.lee.thread.enums import ApplicationEnum
 
 global TOTAL_NUM
-TOTAL_NUM = ApplicationEnum.LendNum.HUNDRED
+TOTAL_NUM = ApplicationEnum.LendNum.THOUSAND
 
 class TrainThread(threading.Thread):
     def run(self):
