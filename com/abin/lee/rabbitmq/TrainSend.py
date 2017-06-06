@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 # !/usr/bin/env python
+import threading
+
 import pika
 import json
 import uuid
@@ -32,8 +34,8 @@ def send(idNo, taskType, uniqKey, realName, userKey, mobile):
     print " [x] Sent %s" %body
     connection.close()
 
-if __name__ == "__main__":
-    # realName = '杨正祥'
+def assemble():
+     # realName = '杨正祥'
     # idNo = '533527198909210238'
     # realName = '倪瑶博'
     # idNo = '110101197606085635'
@@ -50,3 +52,34 @@ if __name__ == "__main__":
     taskType = NumberUtil.randomNumber(5, 10)
     print "idNo="+idNo
     send(idNo, taskType, uniqKey, realName, userKey, mobile)
+
+def concurrency():
+    threads = []
+    for num in range(0, 5):
+        # threadName = 't' + num
+        threadName = threading.Thread(target=assemble,args=())
+        threads.append(threadName)
+    print "threads", threads
+    for thread in threads:
+        thread.setDaemon(True)
+        thread.start()
+
+if __name__ == "__main__":
+   # assemble()
+   #  concurrency()
+    threads = []
+    thread_count = 5
+    for num in range(0, thread_count):
+        # threadName = 't' + num
+        threadName = threading.Thread(target=assemble,args=())
+        # threadName.setDaemon(True)
+        # threadName.daemon = True
+        threads.append(threadName)
+
+    print "threads", threads
+    # for thread in threads:
+    #     # thread.setDaemon(True)
+    #     thread.start()
+    for i in range(0, thread_count):
+        threads[i].daemon = True
+        threads[i].start()
