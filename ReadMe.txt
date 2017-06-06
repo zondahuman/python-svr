@@ -4,6 +4,7 @@ Python内置了一个WSGI服务器，这个模块叫wsgiref，它是用纯Python
 
 easy_install apscheduler
 
-
+To use enum34, do $ pip install enum34
+To use aenum, do $ pip install aenum
 
 

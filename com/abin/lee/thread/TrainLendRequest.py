@@ -5,6 +5,10 @@
 import time
 import threading
 from com.abin.lee.rabbitmq import TrainSend
+from com.abin.lee.thread.enums import ApplicationEnum
+
+global TOTAL_NUM
+TOTAL_NUM = ApplicationEnum.LendNum.HUNDRED
 
 class TrainThread(threading.Thread):
     def run(self):
@@ -16,7 +20,7 @@ class TrainThread(threading.Thread):
 def call():
     print "Start main threading"
     # 创建三个线程
-    threads = [TrainThread() for i in range(3)]
+    threads = [TrainThread() for i in range(TOTAL_NUM)]
     # 启动三个线程
     for t in threads:
         t.start()
@@ -26,7 +30,7 @@ def call():
 def callJoin():
     print "Start main threading"
 
-    threads = [TrainThread() for i in range(3)]
+    threads = [TrainThread() for i in range(TOTAL_NUM)]
 
     for t in threads:
         t.start()
